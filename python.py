@@ -94,5 +94,9 @@ print(value_of_function)
 name_list =['sanchit', 'ankit', 'kanika']
 print(len(name_list))
 
-# Return MAx value
+# Return Max value
 print(max(name_list))
+
+
+# Help to get document regarding the built-in function
+help(max)
