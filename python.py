@@ -54,9 +54,45 @@ else:
 
 # Function -----------------------
 
-number_list =[]
-def summission(number):
-    number_list.append(number)
-summission(20)
-print(number_list)
+# Zero parameter
+def cad_to_ind():
+    print(10 * 61.5)
+cad_to_ind()
 
+
+# One parameter
+def cad_to_ind(cad_amount):
+    print(cad_amount * 61.5)
+cad_to_ind(20)
+
+# Multiple parameter
+def cad_to_ind(cad_amount, convertion_rate):
+    print(cad_amount * convertion_rate)
+cad_to_ind(20,62.5)
+
+def cad_to_ind(cad_amount, convertion_rate):
+    print(cad_amount * convertion_rate)
+cad_to_ind(cad_amount=20,convertion_rate=62.5)
+
+# Default parameter value
+def cad_to_ind(cad_amount, converstion_rate = 65):
+    print(cad_amount * converstion_rate)
+value_of_function= cad_to_ind(20)
+print(value_of_function)
+
+# return
+'''our above function runs and print the value 1300 while tthe function body is being executed but when
+ we try to have python evalutes a function as an expression, it evalutes to NONE'''
+
+def cad_to_ind(cad_amount, converstion_rate = 65):
+    return cad_amount * converstion_rate
+value_of_function= cad_to_ind(20)   # stores the value calculated by thr function in a variable
+print(value_of_function)
+
+
+# Returns the length of the input
+name_list =['sanchit', 'ankit', 'kanika']
+print(len(name_list))
+
+# Return MAx value
+print(max(name_list))
