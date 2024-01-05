@@ -1,9 +1,14 @@
 from pyspark.sql import SparkSession
 from pyspark.sql import Row
+from pyspark.sql import Column
+from pyspark.sql.functions import upper
 from datetime import datetime, date
 import pandas as pd
 
+# Spark Session-------------------------------------------------------------------------------------
 spark = SparkSession.builder.getOrCreate()
+
+# Creating DataFrame --------------------------------------------------------------------------------
 
 # create a PySpark DataFrame from a list of rows
 
@@ -56,3 +61,55 @@ when the data is too large to fit into the driver side.
 '''
 
 print(df.toPandas())
+
+
+# Selecting and Accessing Data from the DataFrame-----------------------------------------------------------------------
+
+'''
+PySpark DataFrame is lazily evaluated and simply selecting a column does not trigger the computation but 
+it returns a Column instance.
+'''
+print(df.select(df.c).show())
+
+
+# Addding a new column = upper_c
+print(df.withColumn('upper_c', upper(df.c)).show())
+
+# To select a subset of rows, use DataFrame.filter().
+print(df.filter(df.a == 1).show())
+
+
+# Grouping --------------------------------------------------------------------------------------------------
+
+# PySpark DataFrame with an explicit schema.
+df = spark.createDataFrame([
+    ['red', 'banana', 1, 10], ['blue', 'banana', 2, 20], ['red', 'carrot', 3, 30],
+    ['blue', 'grape', 4, 40], ['red', 'carrot', 5, 50], ['black', 'carrot', 6, 60],
+    ['red', 'banana', 7, 70], ['red', 'grape', 8, 80]], schema=['color', 'fruit', 'v1', 'v2'])
+print(df.show())
+
+print(df.groupby('color').avg().show())
+
+
+# Getting Data In/Out----------------------------------------------------------------------------------------
+
+# Read CSV file and creating  a DF
+df = spark.read.csv('foo.csv', header=True)
+print(df.show())
+
+# Write dataframe  to CSV file
+df.write.csv('foo.csv', header=True)
+
+
+# Parquet
+df.write.parquet('bar.parquet')
+spark.read.parquet('bar.parquet').show()
+
+# ORC
+df.write.orc('zoo.orc')
+spark.read.orc('zoo.orc').show()
+
+# Working with SQL------------------------------------------------------------------------------------
+
+df.createOrReplaceTempView("tableA")
+spark.sql("SELECT count(*) from tableA").show()
