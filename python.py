@@ -43,4 +43,20 @@ elif a == 1:
 else:
     print("a is less than 1")
 
+user_input = int(input("age:"))
+
+if user_input > 18:
+    print("Adult")
+elif a == 18:
+    print("Majority age")
+else:
+    print("Child")
+
+# Function -----------------------
+
+number_list =[]
+def summission(number):
+    number_list.append(number)
+summission(20)
+print(number_list)
 
