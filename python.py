@@ -8,6 +8,7 @@ DATA type in Python -
 2. Float
 3. String  -- string can concate using + opertor
 4. Boolean  ---is a binary data type
+5. LIST [] - sequence of items, ordered, mutable, comma separated
 '''
 
 
@@ -100,3 +101,23 @@ print(max(name_list))
 
 # Help to get document regarding the built-in function
 help(max)
+
+
+# need to learn the concept ---
+my_list = [1, 2 , 3 , 4 , 5 ,6]
+for i in my_list:
+    print(i)
+    my_list.remove(i)
+print(my_list)
+
+# Methods ---------------------------------------------------------------------------
+#String Method
+
+firstname = 'sanchit'
+surname = 'bhardwaj'
+print(firstname.upper())
+print(firstname.title())
+print(firstname.upper() + " " + surname.upper())
+
+
+
