@@ -9,6 +9,8 @@ DATA type in Python -
 3. String  -- string can concate using + opertor
 4. Boolean  ---is a binary data type
 5. LIST [] - sequence of items, ordered, mutable, comma separated
+6. Dictionary {} - sequence of key value pair , imp. to have all key unique
+7. tuples () - immutable, comma separated
 '''
 
 
@@ -111,13 +113,46 @@ for i in my_list:
 print(my_list)
 
 # Methods ---------------------------------------------------------------------------
-#String Method
+# String Method -----------------
 
 firstname = 'sanchit'
 surname = 'bhardwaj'
 print(firstname.upper())
 print(firstname.title())
 print(firstname.upper() + " " + surname.upper())
+
+# List [] Methods ----------------------------
+
+# append list
+num_list = [1,2,3,4,5]
+num_list.append(6)  # In-place method
+print(num_list)
+
+# concat list
+
+car_list = ['bmw','Audi']
+scooter_list = ['Vespa', 'LML']
+print(car_list + scooter_list)
+
+# List Indexing
+
+num_list = [1,2,3,4,5,6,7]
+print(num_list[0])  # 1
+print(num_list[0:])  # [1,2,3,4,5,6,7]
+print(num_list[2:5])  # [3,4,5]   start indexing is inclusive and stop index is exclusive
+print(num_list[-1])  # 7
+print(num_list[-3])  # 5
+print(num_list[:])
+num_list[0] = 10  # change the value in a list at index 0 from 1 to 10
+print(num_list)
+
+
+
+
+
+
+
+
 
 
 
