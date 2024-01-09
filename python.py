@@ -121,7 +121,7 @@ print(firstname.upper())
 print(firstname.title())
 print(firstname.upper() + " " + surname.upper())
 
-# List [] Methods ----------------------------
+# List [] Methods ----------------------------------------------------------------
 
 # append list
 num_list = [1,2,3,4,5]
@@ -147,10 +147,73 @@ num_list[0] = 10  # change the value in a list at index 0 from 1 to 10
 print(num_list)
 
 
+# Dictionaries ---------------------------------------------------------------
 
 
+breakfast_dict = {
+    "pancakes": 1,
+    "eggs": 2,
+    "waffles": 3,
+}
+
+print(breakfast_dict)
+
+# get the values from the dictionaries
+
+print(breakfast_dict.get("waffles"))  # get method
+print(breakfast_dict["waffles"])  # alternative method to get the value from the dictionary
 
 
+# adding new key pair value to the dictionary
+breakfast_dict["yogurt"] = 10
+print(breakfast_dict)
+
+print(breakfast_dict.keys())  # display all the keys in the dictionary
+
+print("yogurt" in breakfast_dict)   # result will be in boolean
+
+
+# LOOPS --------------------------------------------
+
+# for-loop
+for num in range(0, 11):
+    print(num)
+
+# example
+
+first_list = list(range(0,11))
+final_list =[]
+
+for i in first_list:
+    if i > 4:
+        final_list.append(i)
+    else:
+        pass  # do nothing
+print(final_list)
+
+# List comprehension
+'''
+[variable_name for variable_name in list if(boolean condition)]
+'''
+
+final_list =[i for i in first_list if(i > 4)]
+print(final_list)
+
+final_list =[2*i for i in first_list if(i > 4)]
+print(final_list)
+
+
+# Errors and Exception in Python
+
+'''
+In Python, there are mainly two different kinds of errors:
+1. Syntax error --code types incorrectly and pythin does not know how to interpret it.
+
+2. Exception -- 
+
+'''
+
+print(1/0)  # example of exception in python the number can not be divided by zero and get ZeroDivisionError
 
 
 
