@@ -1,3 +1,8 @@
+-----------------------------------------Accessing DBFS-------------
+%fs ls  ---> list all the files/ folder in the dbfs
+%fs <'dbfs_folder_path'> --- > provide all the files in the particular folder within the DBFS
+
+
 --------------Reading data from DBFS and creating databframe and processsing data---------------------------- 
 Df1 = spark.read.csv('dbfs_file_path',
                      schema = 'order_id int, order_date string')
@@ -23,5 +28,10 @@ newresult = Df1. \
 
 display(newresult)
 
------------------Writing data to DBFS----------------------------
+-----------------Writing data to DBFS (persistent store)----------------------------
+
+newresult. \
+write. \
+csv('dbfs_folder_path_plus_new_folder_name',header = True)
+
          
