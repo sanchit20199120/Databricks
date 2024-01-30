@@ -1,3 +1,4 @@
+--------------Reading data from DBFS and creating databframe and processsing data---------------------------- 
 Df1 = spark.read.csv('dbfs_file_path',
                      schema = 'order_id int, order_date string')
 
@@ -21,4 +22,6 @@ newresult = Df1. \
   orderby ('Order_date')
 
 display(newresult)
+
+-----------------Writing data to DBFS----------------------------
          
