@@ -11,11 +11,14 @@ display(df2)
 
 ---Join, aggregating and filter----------
 
+from pysaprk.sql.functions import sum, round
+
 newresult = Df1. \
   filter('order_id in (1,2,3)). \
   join(Df2, Df1['order_id'] ==Df2['order_id']). \
-  groupby('order_date')
-  agg(sum('revenue_subtotal').alias('total_revenue'))
+  groupby('order_date'). \
+  agg(round(sum('revenue_subtotal'),2).alias('total_revenue')). \
+  orderby ('Order_date')
 
 display(newresult)
          
