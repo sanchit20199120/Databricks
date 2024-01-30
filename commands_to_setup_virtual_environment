@@ -1,0 +1,8 @@
+-------to create a avirtual environment
+python3 -m venv deod-venv
+
+---To activate
+source deod-venv/bin/activate
+
+----install pyspark ----
+pip install pyspark
