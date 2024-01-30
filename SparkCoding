@@ -1,0 +1,21 @@
+Df1 = spark.read.csv('dbfs_file_path',
+                     schema = 'order_id int, order_date string')
+
+display(Df1)
+
+
+Df2 = spark.read.csv('dbfs_file_path',
+                     schema = 'order_id int, order_name string')
+
+display(df2)
+
+---Join, aggregating and filter----------
+
+newresult = Df1. \
+  filter('order_id in (1,2,3)). \
+  join(Df2, Df1['order_id'] ==Df2['order_id']). \
+  groupby('order_date')
+  agg(sum('revenue_subtotal').alias('total_revenue'))
+
+display(newresult)
+         
