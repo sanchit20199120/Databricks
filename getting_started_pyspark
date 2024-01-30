@@ -1,0 +1,30 @@
+
+----------------------------Getting started  with pyspark------------------------------------------
+
+Start with the local development of data engineering piplines using Spark
+
+• Reach to folder where we wanyt to create a virtual environment- using cd <folder_name>
+• Create Virtial Environment - python3.7 -m venv <virtual_environmenyt_name>
+• Activate virtual environment - source <virtual_environmenyt_name>/bin/activate
+• install PySpark for local development - pip install pyspark == 2.4.*
+• open using pycharm and make sure appropriate virtual environment is used from the virtual environment whihc we have setup.
+• create a python file under the project folder not in the virtual environemnet folder
+for example 
+python file name = app.py
+and within app.py, write a spark code
+
+from pyspark.sql import SparkSession
+
+spark = Sparksession. \
+      builder. \
+      master('Local')
+      appName('Github activity - Getting started'). \
+      getOrCreate()
+
+print(type(spark))   ---> result--> <'class  'pyspark.sql.session.Sparksession'>
+
+spark.sql('select current_date().show()
+
+
+
+
