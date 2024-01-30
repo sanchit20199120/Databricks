@@ -21,6 +21,8 @@ spark = Sparksession. \
       appName('Github activity - Getting started'). \
       getOrCreate()
 
+print(type(spark))   ---> result--> <'class  'pyspark.sql.session.Sparksession'>
+
 spark.sql('select current_date().show()
 
 
