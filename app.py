@@ -1,4 +1,4 @@
-import os
+import os   ---to get the runtime parameter
 from util import get_spark_session
 
 env= os.environ.get('ENVIRON')
