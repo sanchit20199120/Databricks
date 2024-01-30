@@ -1,8 +1,10 @@
 -------to create a avirtual environment
-python3 -m venv deod-venv
+Reach to folder where we wanyt to create a virtual environment- using cd <folder_name>
+
+python3 -m venv <virtual_environmenyt_name>
 
 ---To activate
-source deod-venv/bin/activate
+source <virtual_environmenyt_name>/bin/activate
 
 ----install pyspark ----
 pip install pyspark
