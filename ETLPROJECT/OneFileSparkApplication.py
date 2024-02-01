@@ -19,8 +19,10 @@ df = spark. \
 
 # showing result
 df.show()
+# using Window row_number() function  to give every row a unique id
+window_spec = Window.orderBy("city_id")
+print(window_spec)
 
-
-
-df1 = df.withColumn("row_number", row_number().over(Window.orderBy(df.city_id.desc)))
+df1 = df.withColumn("row_number", row_number().over(window_spec))
 df1.show()
+
