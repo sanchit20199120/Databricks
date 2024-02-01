@@ -14,15 +14,21 @@ spark = SparkSession. \
 df = spark. \
         read. \
         format('csv'). \
-        load('/Users/ketan/PycharmProjects/Databricks/RetailData/store_cities.csv', inferSchema="true", header="true")
+        load('/Users/ketan/Desktop/sanchit/sample_data/RetailData/sales.csv/sales.csv', inferSchema="true", header="true")
 
 
 # showing result
-df.show()
+print(df.count())
+df.createOrReplaceTempView("salesTable")
+df_new = spark.sql("select * from salesTable limit 1000")
+print(df_new.count())
+df_new.write.csv('/Users/ketan/Desktop/sanchit/sample_data/sales.csv', header=True)
 # using Window row_number() function  to give every row a unique id
 window_spec = Window.orderBy("city_id")
 print(window_spec)
 
 df1 = df.withColumn("row_number", row_number().over(window_spec))
 df1.show()
+
+
 
