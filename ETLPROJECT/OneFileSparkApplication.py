@@ -17,12 +17,22 @@ df = spark. \
         load('/Users/ketan/Desktop/sanchit/sample_data/RetailData/sales.csv/sales.csv', inferSchema="true", header="true")
 
 
-# showing result
+# Number of records
 print(df.count())
+
+
+# converting dataframe as a table  and taking ot 1000 records from the file and then write that file to my local system
+'''
+
 df.createOrReplaceTempView("salesTable")
 df_new = spark.sql("select * from salesTable limit 1000")
 print(df_new.count())
+
+# writing a file in local 
 df_new.write.csv('/Users/ketan/Desktop/sanchit/sample_data/sales.csv', header=True)
+
+'''
+
 # using Window row_number() function  to give every row a unique id
 window_spec = Window.orderBy("city_id")
 print(window_spec)
