@@ -5,5 +5,5 @@ def transform(df):
     # adding new column with default value 5
     return df.withColumn("constant_value", lit(5)). \
         withColumn("Timestamp", current_timestamp()). \
-        withColumn("row_number", row_number().over(Window.orderBy("city_id")))  # adding new column with row number
+        withColumn("row_number", row_number().over(Window.orderBy("revenue")))  # adding new column with row number
 

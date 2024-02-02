@@ -33,7 +33,9 @@ print(df_new.count())
 df_new.write.csv('/Users/ketan/Desktop/sanchit/sample_data/sales.csv', header=True)
 
 '''
+
 df.show()
+
 # using Window row_number() function  to give every row a unique id
 window_spec = Window.orderBy("revenue")
 print(window_spec)
