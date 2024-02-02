@@ -1,7 +1,9 @@
-# import Spark Session
+# import Spark Session and functions
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import row_number
 from pyspark.sql.window import Window
+from pyspark.sql.functions import lit, current_timestamp
+
 
 # Initiating Spark Session
 spark = SparkSession. \
@@ -17,7 +19,7 @@ df = spark. \
         load('/Users/ketan/Desktop/sanchit/sample_data/RetailData/sales.csv/sales.csv', inferSchema="true", header="true")
 
 
-# Number of records
+# Number of records and list of column name
 print(df.count())
 print(df.columns)
 
@@ -40,9 +42,23 @@ df.show()
 window_spec = Window.orderBy("revenue")
 print(window_spec)
 
-# adding row number column to the df
-df1 = df.withColumn("row_number", row_number().over(window_spec))
-df1.show()
 
+# Transforming data by adding 3 new columns
 
+df_new = df.withColumn("constant_value", lit(5)). \
+        withColumn("Timestamp", current_timestamp()). \
+        withColumn("row_number", row_number().over(Window.orderBy("revenue")))
+
+print(df_new)
+
+# write data
+
+df_new.coalesce(16). \
+        write. \
+        partitionBy('product_id'). \
+        mode('append'). \
+        format('csv'). \
+        save('/Users/ketan/PycharmProjects/Databricks/RetailData/WriteDataFromOneFileSparkApplication/')
+
+print("Process Completed at")
 
