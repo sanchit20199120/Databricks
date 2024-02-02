@@ -19,6 +19,7 @@ df = spark. \
 
 # Number of records
 print(df.count())
+print(df.columns)
 
 
 # converting dataframe as a table  and taking ot 1000 records from the file and then write that file to my local system
@@ -32,11 +33,12 @@ print(df_new.count())
 df_new.write.csv('/Users/ketan/Desktop/sanchit/sample_data/sales.csv', header=True)
 
 '''
-
+df.show()
 # using Window row_number() function  to give every row a unique id
-window_spec = Window.orderBy("city_id")
+window_spec = Window.orderBy("revenue")
 print(window_spec)
 
+# adding row number column to the df
 df1 = df.withColumn("row_number", row_number().over(window_spec))
 df1.show()
 
